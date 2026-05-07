@@ -1,0 +1,50 @@
+codigo|estacion|tipo|altitud|latitud|longitud
+17001002|Agullana|background|214|42.392002|2.8420997
+17013001|Begur|background|200|41.95867|3.2129009
+17125001|Pardines|background|1226|42.31196|2.2130551
+17184001|Santa Pau|background|496|42.14328|2.5102024
+25051001|Bellver de Cerdanya|background|1060|42.368282|1.7767994
+25119002|Juneda (Pla del Molí)|background|255|41.544083|0.8299007
+25120001|Lleida|traffic|220|41.615818|0.6157005
+25172001|Ponts|background|370|41.906708|1.1930013
+25196001|Montsec|background|1570|42.05132|0.7295987
+25209001|Sort|background|692|42.405407|1.1299014
+43005002|Alcover|industrial|238|41.278687|1.1798977
+43014001|Amposta|background|8|40.706703|0.5817011
+43044003|La Sénia|background|428|40.64299|0.28840002
+43047001|Constantí|industrial|56|41.15493|1.2177014
+43064001|Gandesa|background|368|41.058212|0.43969983
+43070001|Els Guiamets|background|220|41.100723|0.755101
+43123005|Reus|traffic|102|41.150803|1.1202013
+43148028|Tarragona (Parc de la Ciutat)|background|13|41.1174|1.2417027
+43171001|Vila-seca|background|41|41.111958|1.1519431
+8015021|Badalona|background|7|41.443985|2.2378986
+8019043|Barcelona (Eixample)|traffic|26|41.385315|2.1537998
+8019044|Barcelona (Gràcia - Sant Gervasi)|traffic|57|41.398724|2.1533988
+8019050|Barcelona (Ciutadella)|background|7|41.386406|2.1873982
+8019054|Barcelona (Parc Vall Hebron)|background|136|41.42611|2.1480017
+8019057|Barcelona (Palau Reial)|background|81|41.38749|2.1151996
+8019058|Barcelona (Observatori Fabra)|background|415|41.41843|2.1238973
+8022006|Berga|background|661|42.0979|1.8482014
+8089005|Gavà|background|25|41.303097|1.9914981
+8096014|Granollers|traffic|133|41.598682|2.2870984
+8102005|Igualada|industrial|311|41.5784|1.6230061
+8112003|Manlleu|background|460|42.003307|2.2872992
+8113007|Manresa|traffic|238|41.730293|1.8253003
+8121013|Mataró|background|40|41.547176|2.4432983
+8125002|Montcada i Reixac|traffic|34|41.48197|2.1882975
+8137001|Montseny (La Castanya)|background|693|41.77928|2.358002
+8169009|El Prat de Llobregat (Sagnier)|background|7|41.321774|2.0821
+8184006|Rubí|background|171|41.492115|2.0424972
+8187012|Sabadell|traffic|210|41.561214|2.1011107
+8194008|Sant Adrià de Besòs|traffic|7|41.425594|2.2221997
+8202001|Sant Celoni|background|145|41.6891|2.495701
+8205002|Sant Cugat del Vallès|background|113|41.476814|2.0889983
+8259002|Santa Maria de Palautordera|background|210|41.691273|2.4408977
+8263001|Sant Vicenç dels Horts (Ribot)|background|38|41.39219|2.0097985
+8279011|Terrassa|traffic|109|41.556114|2.0073977
+8283004|Tona (Zona Esportiva)|background|620|41.84666|2.2175014
+8298008|Vic|background|498|41.93501|2.2400014
+8301004|Viladecans - Atrium|background|14|41.31335|2.0136087
+8305006|Vilafranca del Penedès|background|192|41.346813|1.6865987
+8307012|Vilanova i la Geltrú|traffic|12|41.218987|1.7211995
