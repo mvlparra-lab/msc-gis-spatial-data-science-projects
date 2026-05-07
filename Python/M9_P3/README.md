@@ -1,50 +1,55 @@
-# Introduction to Python
+# Burn Severity Assessment Using dNBR
 
-This project was developed as part of the Master’s Degree in GIS and Spatial Data Science.
+Python project developed to analyse wildfire severity using satellite imagery and spectral indices.
 
-The objective was to introduce fundamental Python programming concepts while applying exploratory data analysis (EDA), data cleaning and geocoding workflows using real CSV datasets.
+## Objectives
 
-## Project Overview
+The workflow uses HLS (Harmonized Landsat Sentinel) imagery accessed through a STAC catalog to calculate the Normalized Burn Ratio (NBR) before and after a wildfire event and derive the dNBR burn severity index.
 
-The notebook includes:
+## Main Tasks
 
-- Basic Python exercises
-- String manipulation
-- Dictionary operations
-- Loops and custom functions
-- CSV handling with Pandas
-- Exploratory Data Analysis (EDA)
-- Variable normalization and cleaning
-- Statistical summaries
-- Pie chart visualization
-- Geocoding using OpenStreetMap Nominatim
-- Error handling with `try/except`
-- Spatial data validation and preprocessing
+- HLS imagery search using a STAC API
+- Date range and cloud cover filtering
+- Automatic selection of the scene with the lowest cloud coverage
+- NIR and SWIR spectral band loading
+- Spatial clipping using the study area bounding box
+- Pre-fire and post-fire NBR calculation
+- dNBR burn severity index calculation
+- Burn severity classification
+- Wildfire severity visualization
+- PNG export of the final burn severity map
 
-The final output is a cleaned CSV dataset prepared for subsequent spatial analysis workflows.
+## Study Area
 
----
+- Evros, Greece
+- Wildfire event: 2023
 
-## Main Libraries Used
+## Technologies
 
-- pandas
+- Python
+- pystac-client
+- planetary-computer
+- rasterio
 - numpy
 - matplotlib
-- geopy
-
----
 
 ## Workflow
 
 ```text
-Raw CSV
-   ↓
-Data Inspection
-   ↓
-Cleaning & Normalization
-   ↓
-EDA & Visualization
-   ↓
-Geocoding Validation
-   ↓
-Clean Spatial Dataset 
+STAC Search
+        ↓
+Image Filtering
+        ↓
+Lowest Cloud Selection
+        ↓
+Band Loading (NIR & SWIR)
+        ↓
+Spatial Clip
+        ↓
+NBR Calculation
+        ↓
+dNBR Calculation
+        ↓
+Severity Classification
+        ↓
+Final Visualization
