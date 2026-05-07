@@ -1,50 +1,55 @@
-# Introduction to Python
+# Incident Impact Mapping with PyQGIS
 
-This project was developed as part of the Master’s Degree in GIS and Spatial Data Science.
+PyQGIS project developed to automate the generation of an incident impact map within QGIS Desktop.
 
-The objective was to introduce fundamental Python programming concepts while applying exploratory data analysis (EDA), data cleaning and geocoding workflows using real CSV datasets.
+## Objectives
 
-## Project Overview
+The workflow combines spatial analysis and cartographic automation techniques to identify affected municipalities, calculate impacted population and generate a final PDF map composition.
 
-The notebook includes:
+## Main Tasks
 
-- Basic Python exercises
-- String manipulation
-- Dictionary operations
-- Loops and custom functions
-- CSV handling with Pandas
-- Exploratory Data Analysis (EDA)
-- Variable normalization and cleaning
-- Statistical summaries
-- Pie chart visualization
-- Geocoding using OpenStreetMap Nominatim
-- Error handling with `try/except`
-- Spatial data validation and preprocessing
+- Loading municipality data from a GeoPackage
+- Incident point creation
+- Configurable buffer generation
+- Spatial intersection analysis
+- Affected municipalities selection
+- Total affected population calculation
+- Temporary memory layer creation
+- Custom symbology and label configuration
+- Programmatic map composition generation
+- Addition of cartographic elements:
+  - Title
+  - North arrow
+  - Scale bar
+  - Legend
+  - Population information
+- Automated PDF export
 
-The final output is a cleaned CSV dataset prepared for subsequent spatial analysis workflows.
+## Technologies
 
----
-
-## Main Libraries Used
-
-- pandas
-- numpy
-- matplotlib
-- geopy
-
----
+- Python
+- PyQGIS
+- PyQt5
+- QGIS Desktop
+- os
 
 ## Workflow
 
 ```text
-Raw CSV
-   ↓
-Data Inspection
-   ↓
-Cleaning & Normalization
-   ↓
-EDA & Visualization
-   ↓
-Geocoding Validation
-   ↓
-Clean Spatial Dataset 
+Municipality Layer
+        ↓
+Incident Point Creation
+        ↓
+Buffer Generation
+        ↓
+Spatial Intersection
+        ↓
+Affected Municipalities Selection
+        ↓
+Population Calculation
+        ↓
+Map Composition Creation
+        ↓
+Cartographic Elements
+        ↓
+PDF Export
