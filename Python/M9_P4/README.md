@@ -1,50 +1,70 @@
-# Introduction to Python
+# Supervised Land Cover Classification with Google Earth Engine
 
-This project was developed as part of the Master’s Degree in GIS and Spatial Data Science.
+Google Earth Engine project developed to perform supervised land cover classification using Landsat 8 imagery and Machine Learning techniques.
 
-The objective was to introduce fundamental Python programming concepts while applying exploratory data analysis (EDA), data cleaning and geocoding workflows using real CSV datasets.
+## Objectives
 
-## Project Overview
+The workflow automates image search, training data generation, model training, validation and final land cover classification for the Banyoles area.
 
-The notebook includes:
+## Study Area
 
-- Basic Python exercises
-- String manipulation
-- Dictionary operations
-- Loops and custom functions
-- CSV handling with Pandas
-- Exploratory Data Analysis (EDA)
-- Variable normalization and cleaning
-- Statistical summaries
-- Pie chart visualization
-- Geocoding using OpenStreetMap Nominatim
-- Error handling with `try/except`
-- Spatial data validation and preprocessing
+- Banyoles, Catalonia, Spain
 
-The final output is a cleaned CSV dataset prepared for subsequent spatial analysis workflows.
+## Main Tasks
 
----
+- Study area definition
+- Landsat 8 image search and filtering
+- Lowest cloud coverage image selection
+- Natural color image visualization
+- Training sample creation
+- Training dataset generation
+- Training and validation split
+- Random Forest classifier training
+- Accuracy assessment
+- Final land cover classification
 
-## Main Libraries Used
+## Land Cover Classes
 
-- pandas
-- numpy
-- matplotlib
-- geopy
+- Water
+- Vegetation
+- Urban
+- Open and agricultural land
 
----
+## Technologies
+
+- JavaScript
+- Google Earth Engine
+- Landsat 8 Collection 2 Level 2
+- Random Forest
 
 ## Workflow
 
 ```text
-Raw CSV
-   ↓
-Data Inspection
-   ↓
-Cleaning & Normalization
-   ↓
-EDA & Visualization
-   ↓
-Geocoding Validation
-   ↓
-Clean Spatial Dataset 
+Define Study Area
+        ↓
+Search Landsat Images
+        ↓
+Cloud Filtering
+        ↓
+Image Selection
+        ↓
+Training Samples
+        ↓
+Dataset Generation
+        ↓
+Train / Validation Split
+        ↓
+Random Forest Training
+        ↓
+Accuracy Assessment
+        ↓
+Final Classification
+```
+
+## Google Earth Engine Project
+
+The project can be accessed through the Google Earth Engine code editor link included below:
+
+```text
+https://code.earthengine.google.com/7f66fa1b5abb9b121df4507e7dac5977
+```
