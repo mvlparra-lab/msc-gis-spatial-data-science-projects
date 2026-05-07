@@ -1,50 +1,55 @@
-# Introduction to Python
+# Exploration and Visualization of Satellite Images
 
-This project was developed as part of the Master’s Degree in GIS and Spatial Data Science.
+Python project developed to explore, visualize and process Landsat 9 satellite imagery using a Jupyter Notebook workflow.
 
-The objective was to introduce fundamental Python programming concepts while applying exploratory data analysis (EDA), data cleaning and geocoding workflows using real CSV datasets.
+## Objectives
 
-## Project Overview
+The workflow combines raster processing and spectral analysis techniques to visualize Landsat 9 bands, apply cloud masking, generate RGB compositions, clip the imagery to Barcelona municipality and calculate vegetation and water indices.
 
-The notebook includes:
+## Main Tasks
 
-- Basic Python exercises
-- String manipulation
-- Dictionary operations
-- Loops and custom functions
-- CSV handling with Pandas
-- Exploratory Data Analysis (EDA)
-- Variable normalization and cleaning
-- Statistical summaries
-- Pie chart visualization
-- Geocoding using OpenStreetMap Nominatim
-- Error handling with `try/except`
-- Spatial data validation and preprocessing
+- Reading and visualization of Landsat 9 bands
+- Histogram generation for visible and NIR bands
+- Scatter plot analysis between Red and NIR bands
+- Cloud masking using the QA_PIXEL band
+- Natural color RGB composition
+- False color image composition
+- Image clipping using a shapefile
+- NDVI calculation
+- NDWI calculation
+- Contrast enhancement for image visualization
+- Application of Landsat Collection 2 Level 2 scaling factors
 
-The final output is a cleaned CSV dataset prepared for subsequent spatial analysis workflows.
+## Technologies
 
----
-
-## Main Libraries Used
-
-- pandas
+- Python
+- Jupyter Notebook
 - numpy
+- rasterio
 - matplotlib
-- geopy
-
----
+- geopandas
 
 ## Workflow
 
 ```text
-Raw CSV
-   ↓
-Data Inspection
-   ↓
-Cleaning & Normalization
-   ↓
-EDA & Visualization
-   ↓
-Geocoding Validation
-   ↓
-Clean Spatial Dataset 
+Landsat 9 Bands
+        ↓
+Band Visualization
+        ↓
+Histogram Analysis
+        ↓
+Scatter Plot Analysis
+        ↓
+Cloud Masking
+        ↓
+RGB Composition
+        ↓
+False Color Composition
+        ↓
+Spatial Clipping
+        ↓
+NDVI & NDWI Calculation
+
+## Data Availability
+
+Original Landsat 9 raster datasets are not included in this repository due to file size limitations.
