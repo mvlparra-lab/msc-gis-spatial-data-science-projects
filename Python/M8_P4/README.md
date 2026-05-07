@@ -1,50 +1,43 @@
-# Introduction to Python
+# Flooded Buildings Detection using Geoprocessing
 
-This project was developed as part of the Master’s Degree in GIS and Spatial Data Science.
+Python project developed to automate the identification of buildings affected by river overflow using geoprocessing techniques.
 
-The objective was to introduce fundamental Python programming concepts while applying exploratory data analysis (EDA), data cleaning and geocoding workflows using real CSV datasets.
+## Objectives
 
-## Project Overview
+The workflow combines spatial analysis and vector geoprocessing operations to detect flooded buildings, reproject the results to WGS84 and export the final affected areas as GeoJSON.
 
-The notebook includes:
+## Main Tasks
 
-- Basic Python exercises
-- String manipulation
-- Dictionary operations
-- Loops and custom functions
-- CSV handling with Pandas
-- Exploratory Data Analysis (EDA)
-- Variable normalization and cleaning
-- Statistical summaries
-- Pie chart visualization
-- Geocoding using OpenStreetMap Nominatim
-- Error handling with `try/except`
-- Spatial data validation and preprocessing
+- Reading GeoPackage layers with Fiona
+- Geometry processing with Shapely
+- Dynamic buffer generation
+- Spatial intersection analysis
+- Flood impact assessment
+- Geometry reprojection to WGS84
+- GeoJSON export automation
+- Automated output folder creation
 
-The final output is a cleaned CSV dataset prepared for subsequent spatial analysis workflows.
+## Technologies
 
----
-
-## Main Libraries Used
-
-- pandas
-- numpy
-- matplotlib
-- geopy
-
----
+- Python
+- fiona
+- shapely
+- pyproj
+- os
 
 ## Workflow
 
 ```text
-Raw CSV
-   ↓
-Data Inspection
-   ↓
-Cleaning & Normalization
-   ↓
-EDA & Visualization
-   ↓
-Geocoding Validation
-   ↓
-Clean Spatial Dataset 
+GeoPackage Layers
+        ↓
+Geometry Extraction
+        ↓
+Dynamic River Buffer
+        ↓
+Spatial Intersection
+        ↓
+Affected Buildings Selection
+        ↓
+Reprojection to WGS84
+        ↓
+GeoJSON Export
