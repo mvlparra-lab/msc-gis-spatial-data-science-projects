@@ -1,0 +1,6 @@
+InId|InARId|Infecha|lat|lon|descripcion
+1|23676791Q|2024-03-15|41.9781|2.8214|Árbol caído en sendero
+2|96952934E|2024-02-20|42.0505|3.1223|Avistamiento de fauna en peligro
+3|22695426S|2024-01-10|41.9357|2.8456|Incendio forestal controlado
+4|21986972F|2023-12-05|42.0032|2.9712|Vertido ilegal de residuos
+5|34573277E|2023-11-30|41.9623|2.7890|Desprendimiento de rocas en sendero

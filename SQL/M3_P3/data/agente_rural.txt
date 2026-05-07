@@ -1,0 +1,6 @@
+ARDni|ARNombre|ARAellidos|ARTlf|ARfecha_nacimiento|AR_parqueid
+23676791Q|Carlos|García López|654789321|1985-06-12|GAV
+96952934E|Marta|Fernández Ruiz|678123456|1990-09-25|GAV
+22695426S|Luis|Martínez Sánchez|612345678|1983-03-14|AAE
+21986972F|Ana|Rodríguez Pérez|645987321|1995-07-30|CTM
+34573277E|Pedro|González Ramírez|698741236|1988-01-22|CTM

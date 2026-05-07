@@ -1,0 +1,87 @@
+
+ALTER TABLE PARQUE DROP COLUMN GID;
+
+ALTER TABLE PARQUE ADD PRIMARY KEY ("codigo");
+
+
+CREATE TABLE comarca (
+  "comarcaid" integer PRIMARY KEY,
+  "comarcanombre" VARCHAR(50),
+  "habitantes" integer
+);
+
+CREATE TABLE coord_general (
+        "CoordDni" VARCHAR(10) PRIMARY KEY,
+        "CoordNombre" VARCHAR(50),
+        "CoordApellidos" VARCHAR(100),
+        "CoordTlf" VARCHAR(15),
+        "comarca_id" integer
+);
+
+ALTER TABLE coord_general ADD FOREIGN KEY ("comarca_id") 
+REFERENCES comarca("comarcaid");
+
+CREATE TABLE coord_tecnico (
+        "TecDni" VARCHAR(10) PRIMARY KEY,
+        "TecNombre" VARCHAR(50),
+        "TecApellidos" VARCHAR(100),
+        "TecTlf" VARCHAR(15),
+        "coord_general_id" VARCHAR(10)
+);
+
+ALTER TABLE coord_tecnico ADD FOREIGN KEY ("coord_general_id") 
+REFERENCES coord_general("CoordDni");
+
+
+CREATE TABLE agente_rural (
+        "ARDni" VARCHAR(10) PRIMARY KEY,
+        "ARNombre" VARCHAR(50),
+        "ARApellidos" VARCHAR(100),
+        "ARTlf" VARCHAR(15),
+        "ARFecha_nacimiento" DATE,
+        "ARparqueid" VARCHAR(3)
+);
+
+ALTER TABLE agente_rural ADD FOREIGN KEY ("ARparqueid") 
+REFERENCES parque("codigo");
+
+CREATE TABLE incidencia (
+        "InId" SERIAL PRIMARY KEY,
+        "InARid" VARCHAR(10),
+        "InFecha" DATE,
+        "lat" NUMERIC(10,8),
+        "lon" NUMERIC(11,8),
+        "descripcion" TEXT
+);
+
+ALTER TABLE incidencia ADD FOREIGN KEY ("InARid") 
+REFERENCES agente_rural("ARDni");
+
+CREATE TABLE parque_comarca (
+        "ParCoId" INTEGER PRIMARY KEY,
+        "PCparqueId" VARCHAR(50),
+        "PCcoordId" VARCHAR(50),
+        "PCcomarcaId" INTEGER
+);
+
+ALTER TABLE parque_comarca ADD FOREIGN KEY ("PCparqueId") 
+REFERENCES parque("codigo");
+ALTER TABLE parque_comarca ADD FOREIGN KEY ("PCcomarcaId") 
+REFERENCES comarca("comarcaid");
+ALTER TABLE parque_comarca ADD FOREIGN KEY ("PCcoordId") 
+REFERENCES coord_tecnico("TecDni");
+
+INSERT INTO comarca ("ComarcaId", "ComarcaNombre", "Habitantes") VALUES
+  (19, 'Garrotxa', 55855),
+  (20, 'Gironès', 184187),
+  (28, 'Pla de l’Estany', 31463),
+  (34, 'Selva', 173518),
+  (31, 'Ripollès', 26268),
+  (2, 'Alt Empordà', 142517),
+  (10, 'Baix Empordà', 133754);
+
+COPY coord_general FROM 'C:\M2_P3\coord_general.txt' HEADER DELIMITER '|';
+COPY coord_tecnico FROM 'C:\M2_P3\coord_tecnico.txt' HEADER DELIMITER '|';
+COPY parque_comarca FROM 'C:\M2_P3\parque_comarca.txt' HEADER DELIMITER '|';
+COPY agente_rural FROM 'C:\M2_P3\agente_rural.txt' HEADER DELIMITER '|';
+COPY incidencia FROM 'C:\M2_P3\incidencia.txt' HEADER DELIMITER '|';

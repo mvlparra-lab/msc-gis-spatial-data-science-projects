@@ -1,0 +1,5 @@
+CoordDni|CoordNombre|CoordApellidos|CoordTlf|comarca_id
+34192521P|Cristina|Acosta|605555782|20
+46005440N|Ricardo|Mulero|609675782|10
+29106789J|Gloria|Gomez|637555879|34
+64239507R|Ruben|Cuetara|678555112|02
