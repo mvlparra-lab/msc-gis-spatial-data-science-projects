@@ -1,50 +1,50 @@
-# Introduction to Python
+# Sentinel-2 Image Search and Footprint Generation
 
-This project was developed as part of the Master’s Degree in GIS and Spatial Data Science.
+Python project developed to automate the search, filtering and footprint generation of Sentinel-2 satellite images over Catalonia.
 
-The objective was to introduce fundamental Python programming concepts while applying exploratory data analysis (EDA), data cleaning and geocoding workflows using real CSV datasets.
+## Objectives
 
-## Project Overview
+The workflow uses the Copernicus STAC API to retrieve Sentinel-2 Level-2A scenes from the last 30 days, select the best scene per tile based on cloud coverage, and export the selected footprints as GeoJSON.
 
-The notebook includes:
+## Main Tasks
 
-- Basic Python exercises
-- String manipulation
-- Dictionary operations
-- Loops and custom functions
-- CSV handling with Pandas
-- Exploratory Data Analysis (EDA)
-- Variable normalization and cleaning
-- Statistical summaries
-- Pie chart visualization
-- Geocoding using OpenStreetMap Nominatim
-- Error handling with `try/except`
-- Spatial data validation and preprocessing
+- Automatic temporal range generation using `datetime`
+- Study area definition using a bounding box
+- Copernicus STAC API query
+- Sentinel-2 Level-2A scene retrieval
+- Scene metadata extraction
+- Scene grouping by Sentinel-2 tile
+- Lowest cloud coverage scene selection
+- Final scene list generation
+- GeoJSON footprint export
+- Visualization and validation in QGIS
 
-The final output is a cleaned CSV dataset prepared for subsequent spatial analysis workflows.
+## Technologies
 
----
-
-## Main Libraries Used
-
-- pandas
-- numpy
-- matplotlib
-- geopy
-
----
+- Python
+- requests
+- json
+- datetime
+- Copernicus STAC API
+- QGIS
 
 ## Workflow
 
 ```text
-Raw CSV
-   ↓
-Data Inspection
-   ↓
-Cleaning & Normalization
-   ↓
-EDA & Visualization
-   ↓
-Geocoding Validation
-   ↓
-Clean Spatial Dataset 
+Define Time Range
+        ↓
+Define Catalonia Bounding Box
+        ↓
+Query Copernicus STAC API
+        ↓
+Retrieve Sentinel-2 Scenes
+        ↓
+Extract Metadata
+        ↓
+Group Scenes by Tile
+        ↓
+Select Lowest Cloud Coverage
+        ↓
+Generate Final Scene List
+        ↓
+Export Footprints to GeoJSON
