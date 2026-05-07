@@ -1,0 +1,63 @@
+      fips            temp            alt              male       
+ Min.   :25001   Min.   :45.60   Min.   : 13.70   Min.   :  5856  
+ 1st Qu.:25008   1st Qu.:47.00   1st Qu.: 22.00   1st Qu.: 64060  
+ Median :25014   Median :49.25   Median : 37.65   Median :239247  
+ Mean   :25014   Mean   :48.71   Mean   :104.26   Mean   :238969  
+ 3rd Qu.:25021   3rd Qu.:50.25   3rd Qu.:193.32   3rd Qu.:370313  
+ Max.   :25027   Max.   :51.00   Max.   :354.10   Max.   :789545  
+     female            pop             suicides       firearm_suicides 
+ Min.   :  5543   Min.   :  11399   Min.   :  1.286   Min.   : 0.5714  
+ 1st Qu.: 69856   1st Qu.: 133916   1st Qu.: 13.690   1st Qu.: 4.9286  
+ Median :254541   Median : 493787   Median : 43.405   Median : 9.0147  
+ Mean   :253353   Mean   : 492322   Mean   : 38.459   Mean   : 9.2198  
+ 3rd Qu.:398156   3rd Qu.: 768469   3rd Qu.: 50.714   3rd Qu.:12.6548  
+ Max.   :822154   Max.   :1611699   Max.   :111.714   Max.   :19.6667  
+   homicides       vehicle_deaths    labor_force        employed     
+ Min.   : 0.6667   Min.   : 1.286   Min.   :  7664   Min.   :  6873  
+ 1st Qu.: 3.5476   1st Qu.:17.071   1st Qu.: 67649   1st Qu.: 61881  
+ Median :12.9564   Median :37.700   Median :248496   Median :223976  
+ Mean   :13.2460   Mean   :35.304   Mean   :261309   Mean   :238152  
+ 3rd Qu.:14.4524   3rd Qu.:46.500   3rd Qu.:406010   3rd Qu.:367638  
+ Max.   :54.0476   Max.   :75.143   Max.   :882398   Max.   :818205  
+   unemployed    life_expectancy   avg_income     less_highschool 
+ Min.   :  791   Min.   :78.85   Min.   : 51187   Min.   : 4.400  
+ 1st Qu.: 5768   1st Qu.:79.72   1st Qu.: 55143   1st Qu.: 5.500  
+ Median :24521   Median :80.39   Median : 67506   Median : 6.900  
+ Mean   :23157   Mean   :80.45   Mean   : 72239   Mean   : 8.343  
+ 3rd Qu.:36376   3rd Qu.:81.22   3rd Qu.: 83134   3rd Qu.:10.350  
+ Max.   :64193   Max.   :82.05   Max.   :124168   Max.   :14.300  
+ plus_bachelors   poverty_rate    medical_costs    food_costs   housing_costs  
+ Min.   :27.10   Min.   : 5.500   Min.   :3048   Min.   :3690   Min.   : 8844  
+ 1st Qu.:36.62   1st Qu.: 7.000   1st Qu.:3048   1st Qu.:3690   1st Qu.: 9886  
+ Median :41.65   Median : 9.050   Median :3048   Median :3690   Median :12672  
+ Mean   :41.86   Mean   : 9.357   Mean   :3048   Mean   :3690   Mean   :13796  
+ 3rd Qu.:47.75   3rd Qu.:11.175   3rd Qu.:3048   3rd Qu.:3690   3rd Qu.:17596  
+ Max.   :56.30   Max.   :16.700   Max.   :3048   Max.   :3690   Max.   :20580  
+   tax_costs     poor_health       smokers      adult_obesity  
+ Min.   :4003   Min.   :11.12   Min.   :12.33   Min.   :21.40  
+ 1st Qu.:4172   1st Qu.:12.53   1st Qu.:15.05   1st Qu.:23.02  
+ Median :4624   Median :14.23   Median :16.11   Median :26.40  
+ Mean   :4806   Mean   :14.24   Mean   :16.15   Mean   :25.79  
+ 3rd Qu.:5422   3rd Qu.:15.04   3rd Qu.:18.06   3rd Qu.:28.38  
+ Max.   :5906   Max.   :19.07   Max.   :19.48   Max.   :30.50  
+ housing_problems children_in_poverty   uninsured     excessive_drinking
+ Min.   :14.66    Min.   : 5.50       Min.   :2.383   Min.   :22.08     
+ 1st Qu.:15.88    1st Qu.: 9.45       1st Qu.:2.885   1st Qu.:22.79     
+ Median :16.62    Median :11.55       Median :3.586   Median :23.40     
+ Mean   :17.85    Mean   :12.21       Mean   :3.437   Mean   :23.95     
+ 3rd Qu.:18.83    3rd Qu.:14.97       3rd Qu.:3.813   3rd Qu.:25.44     
+ Max.   :24.47    Max.   :23.90       Max.   :4.447   Max.   :26.45     
+  prop_hombres     prop_mujeres      tasa_paro       tasa_suicidios  
+ Min.   :0.4665   Min.   :0.4863   Min.   :0.07219   Min.   : 5.373  
+ 1st Qu.:0.4822   1st Qu.:0.5109   1st Qu.:0.08457   1st Qu.: 7.875  
+ Median :0.4836   Median :0.5164   Median :0.09333   Median : 8.679  
+ Mean   :0.4860   Mean   :0.5140   Mean   :0.09106   Mean   : 9.037  
+ 3rd Qu.:0.4891   3rd Qu.:0.5178   3rd Qu.:0.10115   3rd Qu.:10.462  
+ Max.   :0.5137   Max.   :0.5335   Max.   :0.10391   Max.   :12.386  
+ tasa_homicidios   
+ Min.   :  0.6514  
+ 1st Qu.:  1.1005  
+ Median :  1.8662  
+ Mean   : 15.6121  
+ 3rd Qu.:  3.9343  
+ Max.   :116.2035  

@@ -1,0 +1,217 @@
+---
+title: "PRÁCTICA 2 - Análisis exploratorio de datos"
+author: "María Victoria León Parra"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+    fig_caption: true
+    latex_engine: xelatex
+    keep_tex: true
+header-includes:
+  - \usepackage{fvextra}
+  - \fvset{breaklines=true, breakanywhere=true}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(pacman)
+p_load(tidyverse, janitor, skimr, naniar, lubridate, stringr)
+```
+
+\newpage
+# Introducción
+
+Este informe documenta el análisis exploratorio realizado sobre el conjunto de datos `massachusetts.csv`, que contiene información socioeconómica, demográfica y de salud para distintos condados del estado.
+
+El objetivo principal es familiarizarse con técnicas básicas de limpieza, exploración y visualización de datos. A lo largo del informe se realiza:
+
+- La preparación inicial del conjunto de datos, incluyendo limpieza de nombres y tratamiento de valores perdidos.
+- La creación de variables derivadas útiles para el análisis.
+- La identificación de outliers mediante técnicas gráficas y estadísticas.
+- La generación de visualizaciones para comprender patrones y relaciones entre variables.
+- Una síntesis de conclusiones basada en los hallazgos obtenidos.
+
+\newpage
+# Carga y preparación de los datos
+
+En esta sección se carga el conjunto de datos original, se realiza una limpieza básica de los nombres de variables y se explora su estructura.
+
+```{r carga-datos}
+datos <- read_csv("../datos/massachusetts.csv") |> 
+  clean_names()
+
+head(datos)
+str(datos)
+skim(datos)
+```
+
+\newpage
+# Tratamiento de valores faltantes
+
+Se identifican y visualizan los valores faltantes. Posteriormente, se aplican técnicas de imputación para rellenar esos valores con la media en las variables numéricas.
+
+```{r valores-faltantes}
+gg_miss_var(datos) +
+  labs(title = "Valores NA por variable", x = "Variables", y = "Número de valores NA")
+ggsave("../salida/na_por_variable.png", width = 8, height = 5, bg = "white")
+```
+
+```{r imputacion-na}
+datos <- datos |> 
+  mutate(across(where(is.numeric), ~replace_na(., mean(., na.rm = TRUE))))
+```
+
+\newpage
+# Creación de nuevas variables
+
+Se generan variables derivadas a partir de las existentes que resultan más informativas para el análisis.
+
+```{r nuevas-variables}
+datos <- datos |> 
+  mutate(
+    prop_hombres = male / pop,
+    prop_mujeres = female / pop,
+    tasa_paro = unemployed / labor_force,
+    tasa_suicidios = suicides / pop * 100000,
+    tasa_homicidios = homicides / pop * 100000
+  )
+```
+
+\newpage
+# Identificación de outliers
+
+Aquí se detectan valores atípicos. Además, se consolida una tabla con los condados que presentan outliers en distintas variables clave.
+
+```{r boxplot-suicides}
+ggplot(datos, aes(y = suicides)) +
+  geom_boxplot(fill = "lightblue", outlier.color = "red") +
+  labs(title = "Outliers en la variable 'suicides'", y = "Tasa de suicidios") +
+  theme_minimal()
+ggsave("../salida/boxplot_suicides.png", width = 6, height = 5, bg = "white")
+```
+
+```{r tabla-outliers}
+outliers_suicides <- boxplot.stats(datos$suicides)$out
+outliers_tabla <- datos |> filter(suicides %in% outliers_suicides) |> select(name, suicides)
+
+outliers_por_variable <- list()
+numeric_vars <- datos |> select(where(is.numeric), -fips) |> names()
+
+for (var in numeric_vars) {
+  valores_out <- boxplot.stats(datos[[var]])$out
+  if (length(valores_out) > 0) {
+    condados <- datos |> filter(.data[[var]] %in% valores_out) |> pull(name)
+    outliers_por_variable[[var]] <- unique(condados)
+  }
+}
+
+outliers_tabla <- full_join(outliers_tabla, datos |> filter(name %in% outliers_por_variable$homicides) |> select(name, homicides), by = "name")
+outliers_tabla <- full_join(outliers_tabla, datos |> filter(name %in% outliers_por_variable$housing_problems) |> select(name, housing_problems), by = "name")
+outliers_tabla <- full_join(outliers_tabla, datos |> filter(name %in% outliers_por_variable$tasa_homicidios) |> select(name, tasa_homicidios), by = "name")
+outliers_tabla <- full_join(outliers_tabla, datos |> filter(name %in% outliers_por_variable$prop_hombres) |> select(name, prop_hombres), by = "name")
+outliers_tabla <- full_join(outliers_tabla, datos |> filter(name %in% outliers_por_variable$prop_mujeres) |> select(name, prop_mujeres), by = "name")
+
+write_csv(outliers_tabla, "../salida/outliers_tabla.csv")
+```
+
+\newpage
+# Estadísticas descriptivas
+
+Esta sección incluye resúmenes estadísticos de todas las variables, permitiendo identificar rangos, medias, desviaciones y posibles anomalías en los datos.
+
+```{r resumen-summary}
+sink("../salida/resumen_summary.txt")
+summary(select(datos, -name))
+sink()
+```
+
+```{r resumen-skim}
+sink("../salida/resumen_skim.txt")
+print(skim(select(datos, -name)))
+sink()
+```
+
+\newpage
+# Visualización de datos
+
+Se presentan diversas visualizaciones para explorar la distribución de variables y relaciones entre ellas.
+
+## Histograma del ingreso medio
+
+```{r histograma}
+ggplot(datos, aes(x = avg_income)) +
+  geom_histogram(binwidth = 5000, fill = "steelblue", color = "white") +
+  geom_vline(aes(xintercept = mean(avg_income)), color = "red", linetype = "dashed", size = 1) +
+  labs(title = "Distribución del ingreso medio", x = "Ingreso medio", y = "Frecuencia") +
+  theme_minimal()
+ggsave("../salida/histograma_avg_income.png", width = 7, height = 5, bg = "white")
+```
+
+\newpage
+## Densidad del ingreso medio
+
+```{r densidad}
+ggplot(datos, aes(x = avg_income)) +
+  geom_density(fill = "skyblue", alpha = 0.5) +
+  labs(title = "Densidad del ingreso medio", x = "Ingreso medio", y = "Densidad") +
+  theme_minimal()
+ggsave("../salida/densidad_avg_income.png", width = 7, height = 5, bg = "white")
+```
+
+\newpage
+## Boxplot de homicidios
+
+```{r boxplot-homicidios}
+ggplot(datos, aes(y = homicides)) +
+  geom_boxplot(fill = "cadetblue", outlier.color = "red") +
+  labs(title = "Boxplot del número de homicidios por condado", y = "Número de homicidios") +
+  theme_minimal()
+ggsave("../salida/boxplot_homicidios.png", width = 6, height = 4, bg = "white")
+```
+
+\newpage
+## Dispersión: ingreso vs esperanza de vida
+
+```{r dispersion}
+ggplot(datos, aes(x = avg_income, y = life_expectancy)) +
+  geom_point(color = "dodgerblue", size = 3) +
+  geom_smooth(method = "lm", se = FALSE, color = "grey") +
+  labs(title = "Relación entre ingreso medio y esperanza de vida", x = "Ingreso medio", y = "Esperanza de vida (años)") +
+  theme_minimal()
+ggsave("../salida/scatter_income_life_expectancy.png", width = 7, height = 5, bg = "white")
+```
+
+\newpage
+## Burbujas: ingreso, esperanza de vida y salud
+
+```{r burbujas}
+ggplot(datos, aes(x = avg_income, y = life_expectancy, size = pop, color = poor_health)) +
+  geom_point(alpha = 0.8) +
+  scale_size_continuous(range = c(3, 12)) +
+  scale_color_gradient(low = "lightblue", high = "darkred") +
+  labs(
+    title = "Relación entre ingreso, salud, longevidad y población",
+    x = "Ingreso medio",
+    y = "Esperanza de vida",
+    size = "Población",
+    color = "Mala salud (%)"
+  ) +
+  theme_minimal()
+ggsave("../salida/burbujas_ingreso_vida_salud.png", width = 8, height = 6, bg = "white")
+```
+
+\newpage
+# Conclusiones
+
+- **Limpieza y preparación de los datos**: Se estandarizaron correctamente los nombres de las columnas y se imputaron los valores faltantes utilizando la media, dejando el conjunto de datos listo para el análisis.
+- **Estadísticas descriptivas**: Los resúmenes generados con `summary()` y `skim()` ofrecieron una visión detallada de las variables, permitiendo identificar tendencias generales, rangos y posibles valores extremos.
+- **Outliers**: Se detectaron valores atípicos significativos en variables como `suicides`, `homicides`, `tasa_homicidios`, `housing_problems`, y proporciones de género. Estos fueron almacenados y analizados en una tabla final.
+- **Visualización de datos**:
+  - El **histograma** y el **gráfico de densidad** mostraron una distribución sesgada del ingreso medio hacia la derecha.
+  - El **boxplot** de homicidios permitió identificar condados con tasas inusualmente altas.
+  - El **gráfico de dispersión** evidenció una relación positiva clara entre el ingreso medio y la esperanza de vida.
+  - El **gráfico de burbujas** integró ingreso, salud, esperanza de vida y población, mostrando patrones relevantes.
+- **Análisis final**: Las visualizaciones y estadísticas respaldan la hipótesis de que mayores ingresos se asocian con mejores indicadores de salud y longevidad. La combinación de técnicas gráficas y análisis numérico facilitó la detección de patrones importantes en los datos.
